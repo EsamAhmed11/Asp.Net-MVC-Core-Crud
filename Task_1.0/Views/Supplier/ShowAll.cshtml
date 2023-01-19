@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Supplier>
+@{
+    ViewData["Title"] = "ShowAll";
+    int x = 1;
+}
+
+<h1>ShowAll</h1>
+<a asp-action="Create">Create New</a>
+<table class="table table-striped">
+  <thead>
+   <th> @Html.DisplayNameFor(n=>n.SupplierID)</th>
+   <th> @Html.DisplayNameFor(n=>n.SupplierName)</th>
+   <th>Edite </th>
+   <th>Delete </th>
+  </thead>
+  <tbody>
+   @foreach (var item in Model)
+   {
+       <tr>
+           <td> @(x++) </td>
+           <td> @item.SupplierName</td>
+           <td> <a asp-action="Edite" asp-route-id="@item.SupplierID" class="btn btn-primary"> Edite</a></td>
+           <td> <a asp-action="Delete" asp-route-id="@item.SupplierID" class="btn btn-danger"> Delete</a></td>
+       </tr>
+   }
+   </tbody>
+</table>

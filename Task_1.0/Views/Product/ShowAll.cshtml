@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "ShowAll";
+    int x = 1;
+}
+
+<h1>ShowAll</h1>
+    <a asp-action="Create">Create New</a>
+<table class="table table-striped">
+  <thead>
+   <th> @Html.DisplayNameFor(n=>n.ProductID)</th>
+   <th> @Html.DisplayNameFor(n=>n.ProductName)</th>
+   <th> @Html.DisplayNameFor(n=>n.QuantityPerUnit)</th>
+   <th> @Html.DisplayNameFor(n=>n.ReorderLevel)</th>
+   <th> @Html.DisplayNameFor(n=>n.UnitPrice)</th>
+   <th> @Html.DisplayNameFor(n=>n.UnitsInStock)</th>
+   <th> @Html.DisplayNameFor(n=>n.UnitsOnOrder)</th>
+   <th> @Html.DisplayNameFor(n=>n.SupplierID)</th>
+   <th>Edite </th>
+   <th>Delete </th>
+  </thead>
+  <tbody>
+   @foreach (var item in Model)
+   {
+       <tr>
+           <td> @(x++) </td>
+           <td> @item.ProductName</td>
+           <td> @item.QuantityPerUnit</td>
+           <td> @item.ReorderLevel</td>
+           <td> @item.UnitPrice</td>
+           <td> @item.UnitsInStock</td>
+           <td> @item.UnitsOnOrder</td>
+           <td> @item._Supplier.SupplierName</td>
+
+           <td> <a asp-action="Edite" asp-route-id="@item.ProductID" class="btn btn-primary"> Edite</a></td>
+           <td> <a asp-action="Delete" asp-route-id="@item.ProductID" class="btn btn-danger"> Delete</a></td>
+       </tr>
+   }
+   </tbody>
+</table>
